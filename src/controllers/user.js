@@ -14,10 +14,8 @@ const addUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12)
 
-    console.log(hashedPassword)
-
     const result = await User.addUser(email, hashedPassword, name)
-    console.log('1', result)
+
     if (result) {
       res.status(201).json({ result })
     } else {
