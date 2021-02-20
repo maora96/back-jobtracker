@@ -1,19 +1,23 @@
 const User = require('../repositories/user')
+const Password = require('../middlewares/encrypt')
+const bcrypt = require('bcryptjs')
 
 const addUser = async (req, res) => {
   const { email = null, password = null, name = null } = req.body
 
   try {
-    const hashedPassword = await Password.encrypt(password)
-
-    const existingUser = User.getUserByEmail(email)
+    const existingUser = await User.getUserByEmail(email)
 
     if (existingUser) {
       return res.status(401).json({ message: 'User already registered.' })
     }
 
-    const result = await User.addUser({ email, password: hashedPassword, name })
+    const hashedPassword = await bcrypt.hash(password, 12)
 
+    console.log(hashedPassword)
+
+    const result = await User.addUser(email, hashedPassword, name)
+    console.log('1', result)
     if (result) {
       res.status(201).json({ result })
     } else {
@@ -64,7 +68,7 @@ const getUserEntries = async (req, res) => {
     if (entries) {
       return res.status(200).json({ entries })
     } else {
-      return res.status(401).json({ message: 'No entries found.' })
+      return res.status(404).json({ message: 'No entries found.' })
     }
   } catch (error) {
     return res.status(401).json({ message: 'Something went wrong.' })
