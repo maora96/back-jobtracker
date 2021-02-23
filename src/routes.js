@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const User = require('./controllers/user')
+const Entry = require('./controllers/entry')
 
 // auth
 router.post('/auth') // login
@@ -14,12 +15,12 @@ router.get('/user/:id/entries', User.getUserEntries) // get all entries by user 
 router.delete('/user/:id', User.deleteUser) // delete user by id
 
 // entries
-router.post('/entries') // add entry
-router.get('/entries') // get all entries
-router.get('/entries/:id') // get entry by id
-router.get('/entries/:id/interactions') // get all interactions by entry id
-router.delete('/entries/:id') // delete by id
-router.put('/entries/:id') // update by id
+router.post('/entries', Entry.addEntry) // add entry
+router.get('/entries', Entry.getAllEntries) // get all entries
+router.get('/entries/:id', Entry.getEntryById) // get entry by id
+router.get('/entries/:id/interactions', Entry.getInteractionsByEntryId) // get all interactions by entry id
+router.delete('/entries/:id', Entry.deleteEntryById) // delete by id
+router.put('/entries/:id', Entry.updateEntryById) // update by id
 
 // intereactions
 router.post('/interactions') // add interaction

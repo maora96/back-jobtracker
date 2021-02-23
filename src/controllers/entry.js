@@ -32,7 +32,7 @@ const addEntry = async (req, res) => {
 
 const getAllEntries = async (req, res) => {
   try {
-    const result = Entry.getAllEntries()
+    const result = await Entry.getAllEntries()
 
     if (result) {
       res.status(201).json({ result })
@@ -109,7 +109,8 @@ const updateEntryById = async (req, res) => {
           role,
           level,
           skills,
-          recruiter
+          recruiter,
+          id
         )
         if (result) {
           res.status(201).json({ result })

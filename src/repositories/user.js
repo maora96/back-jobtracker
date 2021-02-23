@@ -43,12 +43,11 @@ const deleteUser = async id => {
 
 const getEntriesByUserId = async id => {
   const q = {
-    text: 'select * from entries where user_id = $1',
-    values: [id]
+    text: `select * from entries where user_id = ${id}`
   }
 
   const query = await database.query(q)
-  return query.rows[0]
+  return query.rows
 }
 
 module.exports = {
