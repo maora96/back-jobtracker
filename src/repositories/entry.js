@@ -1,13 +1,10 @@
 const database = require('../utils/database')
 
 const addEntry = async (user_id, company, role, level, skills, recruiter) => {
-  console.log('hi')
   const q = {
     text: `insert into entries (id, user_id, company, role, level, skills, recruiter) values (default, ${user_id}, '${company}', '${role}', '${level}', '{${skills}}', '${recruiter}') returning *`
   }
-  console.log(q)
   const query = await database.query(q)
-  console.log('hi', query)
   return query.rows
 }
 
