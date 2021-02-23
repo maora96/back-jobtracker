@@ -4,7 +4,7 @@ const cors = require('cors')
 const router = require('./src/routes')
 const PORT = process.env.PORT
 const app = express()
-
+require('dotenv').config()
 app.use(bodyparser.json({ extended: true }))
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(cors())
