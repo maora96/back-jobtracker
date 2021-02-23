@@ -49,7 +49,6 @@ const getInteractionById = async (req, res) => {
 
 const updateInteractionById = async (req, res) => {
   const {
-    entry_id = null,
     type = null,
     date = null,
     links = null,
@@ -63,7 +62,6 @@ const updateInteractionById = async (req, res) => {
       const interaction = await Interaction.getInteractionById(id)
       if (interaction) {
         const result = await Interaction.updateInteractionById(
-          entry_id,
           type,
           date,
           links,

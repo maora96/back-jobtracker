@@ -4,6 +4,7 @@ const router = express.Router()
 
 const User = require('./controllers/user')
 const Entry = require('./controllers/entry')
+const Interaction = require('./controllers/interactions')
 
 // auth
 router.post('/auth') // login
@@ -23,9 +24,9 @@ router.delete('/entries/:id', Entry.deleteEntryById) // delete by id
 router.put('/entries/:id', Entry.updateEntryById) // update by id
 
 // intereactions
-router.post('/interactions') // add interaction
-router.get('/interactions/:id') // get interaction by id
-router.put('/interactions/:id') // update interaction by id
-router.delete('/interactions/:id') // delete interaction by id
+router.post('/interactions', Interaction.addInteraction) // add interaction
+router.get('/interactions/:id', Interaction.getInteractionById) // get interaction by id
+router.put('/interactions/:id', Interaction.updateInteractionById) // update interaction by id
+router.delete('/interactions/:id', Interaction.deleteInteractionById) // delete interaction by id
 
 module.exports = router
