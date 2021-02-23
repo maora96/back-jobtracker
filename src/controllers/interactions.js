@@ -68,6 +68,7 @@ const updateInteractionById = async (req, res) => {
           expected_response,
           id
         )
+
         if (result) {
           res.status(201).json({ result })
         } else {

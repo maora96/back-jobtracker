@@ -9,8 +9,10 @@ const addInteraction = async (
 ) => {
   console.log('hi')
   const q = {
-    text: `insert into entries (id, entry_id, type, date, links, expected_response) values (default, ${entry_id}, '${type}', '${date}', '{${links}}', '${expected_response}') returning *`
+    text: `insert into interactions (id, entry_id, type, date, links, expected_response) values (default, ${entry_id}, '${type}', '${date}', '{${links}}', '${expected_response}') returning *`
   }
+
+  console.log(q)
 
   const query = await database.query(q)
   return query.rows
@@ -48,6 +50,7 @@ const updateInteractionById = async (
   }
 
   const query = await database.query(q)
+
   return query.rows
 }
 
