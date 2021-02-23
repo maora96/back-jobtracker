@@ -9,4 +9,6 @@ app.use(bodyparser.json({ extended: true }))
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(cors())
 app.use(router)
-app.listen(PORT || 8081, '0.0.0.0', null, () => console.log('server running'))
+app.listen(process.env.PORT || 8081, '0.0.0.0', null, () =>
+  console.log('server running')
+)
