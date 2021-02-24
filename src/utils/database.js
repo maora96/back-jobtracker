@@ -15,6 +15,6 @@ const client = new Client({
 client
   .connect()
   .then(() => console.log('connected'))
-  .catch(err => console.error('connection error rip', err.stack))
+  .catch(err => console.error('connection error rip', err))
 
 module.exports = client
