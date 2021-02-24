@@ -14,7 +14,7 @@ const client = new Client({
 })
 
 client
-  .connect(process.env.DATABASE_URL)
+  .connect()
   .then(() => console.log('connected'))
   .catch(err => console.error('connection error rip', err))
 
